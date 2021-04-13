@@ -5,10 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-    public class User_Data
+    public class Diary
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Last_Name { get; set; }
     }
 }

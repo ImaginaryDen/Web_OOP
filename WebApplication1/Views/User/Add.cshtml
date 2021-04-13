@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication1.Models.User_Data>
+﻿@model IEnumerable<WebApplication1.Models.User>
 @{
     ViewData["Title"] = "New_user";
 }
@@ -10,17 +10,17 @@
 </head>
 <body>
     <div>
-        <h3>Регестрация</h3>
-        <p>Для регестрации заполните следующие поля:</p>
+        <h3>Регистрация</h3>
+        <p>Для регистрации заполните следующие поля:</p>
         <form method="post">
             <table>
                 <tr>
                     <td>Имя:</td>
-                    <td><input type="text" name="Name" /> </td>
+                    <td><input type="text" name="FirstName" /> </td>
                 </tr>
                 <tr>
                     <td>Фамилия:</td>
-                    <td><input type="text" name="Last_Name" /></td>
+                    <td><input type="text" name="LastName" /></td>
                 </tr>
                 <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
             </table>

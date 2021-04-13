@@ -5,17 +5,17 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-    public static class Adm_inst
+    public static class AdminUser
     {
-        public static void Initialize(Users context)
+        public static void Initialize(WorkContext context)
         {
-            if (!context.Users_db.Any())
+            if (!context.Users.Any())
             {
-                context.Users_db.AddRange(
-                    new User_Data
+                context.Users.AddRange(
+                    new User
                     {
-                        Name = "Admin",
-                        Last_Name = "Super"
+                        FirstName = "Admin",
+                        LastName = "Super"
                     }
                 );
                 context.SaveChanges();

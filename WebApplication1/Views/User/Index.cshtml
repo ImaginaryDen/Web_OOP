@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication1.Models.User_Data>
+﻿@model IEnumerable<WebApplication1.Models.User>
 @{
     ViewData["Title"] = "Users";
 }
@@ -7,24 +7,26 @@
 <html>
 <head>
     <title>Users</title>
+
 </head>
 <body>
     <h3>Users</h3>
+    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Add">Add</a>
     <table>
         <tr>
             <td>Имя</td>
             <td>Фамилия</td>
-            <td>Id</td>
+            <td>ID</td>
             <td></td>
         </tr>
         @foreach (var user_data in Model)
-            {
-            <tr>
-                <td>@user_data.Name</td>
-                <td>@user_data.Last_Name</td>
-                <td>@user_data.Id</td>
-            </tr>
-        }
+        {
+<tr>
+    <td>@user_data.FirstName</td>
+    <td>@user_data.LastName</td>
+    <td>@user_data.ID</td>
+</tr>
+}
     </table>
 </body>
 </html>
