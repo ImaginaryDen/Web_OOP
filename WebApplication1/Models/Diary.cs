@@ -1,18 +1,23 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-	public class Diary : DbContext
+<<<<<<<< HEAD:WebApplication1/Models/Diary.cs
+    public class Diary
+    {
+    }
+========
+	public class User_Data
 	{
-		public DbSet<entry> Users_db { get; set; }
-
-		public Diary(DbContextOptions<Diary> options) : base(options)
-		{
-			Database.EnsureCreated();
-		}
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public string Last_Name { get; set; }
+		public string Email { get; set; }
+		public string Password { get; set; }
+		public Diary Diary_data { get; set; }
 	}
+>>>>>>>> Vasily:WebApplication1/Models/User_Data.cs
 }

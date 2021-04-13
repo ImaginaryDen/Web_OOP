@@ -22,8 +22,8 @@ namespace WebApplication1
 
                 try
                 {
-                    var context = services.GetRequiredService<Users>();
-                    Adm_inst.Initialize(context);
+                    var context = services.GetRequiredService<WorkContext>();
+                    AdminUser.Initialize(context);
                 }
                 catch (Exception ex)
                 {
