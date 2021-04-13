@@ -51,7 +51,7 @@ namespace WebApplication1.Controllers
             List<Diary> diaries = new List<Diary>();
             diaries = database.Diaries.ToList();
             belong.DiaryID = diaries.Last().ID;
-            belong.UserID = 1;
+            belong.UserID = int.Parse(User.Identity.Name);
             database.Belongings.Add(belong);
             database.SaveChanges();
             return RedirectToAction("Index");
@@ -60,9 +60,8 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult RequestDiary(int? ID)
         {
-            if (ID == null) return RedirectToAction("Index");
             List<Diary> diaries = new List<Diary>();
-            foreach(var item in database.Belongings.ToList().Where(x=> x.UserID == 1))
+            foreach(var item in database.Belongings.ToList().Where(x=> x.UserID == (ID ?? int.Parse(User.Identity.Name))))
             {
                 diaries.Add(database.Diaries.Find(item.DiaryID));
             }

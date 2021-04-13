@@ -56,10 +56,11 @@ namespace WebApplication1.Controllers
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    db.Users.Add(new User { Email = model.Email, Password = model.Password });
+                    User user_new = new User { Email = model.Email, Password = model.Password };
+                    db.Users.Add(user_new);
                     await db.SaveChangesAsync();
 
-                    await Authenticate(model.Email); // аутентификация
+                    await Authenticate(user_new.ID.ToString()); // аутентификация
 
                     return RedirectToAction("Index", "Home");
                 }
