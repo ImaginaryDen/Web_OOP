@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-	public class Users : DbContext
+	public class Diary : DbContext
 	{
-		public DbSet<User_Data> Users_db { get; set; }
+		public DbSet<entry> Users_db { get; set; }
 
-		public Users(DbContextOptions<Users> options) : base(options)
+		public Diary(DbContextOptions<Diary> options) : base(options)
 		{
 			Database.EnsureCreated();
 		}
