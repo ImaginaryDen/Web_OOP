@@ -13,19 +13,21 @@
     <h3>Users</h3>
     <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Add">Add</a>
     <table>
-        <tr>
-            <td>Имя</td>
-            <td>Фамилия</td>
-            <td>ID</td>
-            <td></td>
-        </tr>
+		<tr>
+			<td>Имя</td>
+			<td>Фамилия</td>
+			<td>ID</td>
+			<td>Email</td>
+			<td></td>
+		</tr>
         @foreach (var user_data in Model)
         {
-<tr>
-    <td>@user_data.FirstName</td>
-    <td>@user_data.LastName</td>
-    <td>@user_data.ID</td>
-</tr>
+	<tr>
+		<td>@user_data.FirstName</td>
+		<td>@user_data.LastName</td>
+		<td>@user_data.ID</td>
+		<td>@user_data.Email</td>
+	</tr>
 }
     </table>
 </body>
