@@ -16,8 +16,8 @@ namespace WebApplication1.Models
 					{
 						Name = "Admin",
 						Last_Name = "Super",
-						mail = "adm@adm.ru",
-						password = "adm"
+						Email = "adm@adm.ru",
+						Password = "adm"
 					}
 				);
 				

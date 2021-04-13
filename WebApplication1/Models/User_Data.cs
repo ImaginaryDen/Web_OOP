@@ -10,8 +10,9 @@ namespace WebApplication1.Models
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public string Last_Name { get; set; }
-		public string mail { get; set; }
-		public string password { get; set; }
-		public Diary diary { get; set; }
+		public string Email { get; set; }
+		public string Password { get; set; }
+		public Diary Diary_data { get; set; }
+		public string test { get; set; }
 	}
 }
