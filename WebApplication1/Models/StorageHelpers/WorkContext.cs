@@ -10,6 +10,7 @@ namespace WebApplication1.Models
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Diary> Diaries { get; set; } 
+        public DbSet<Belonging> Belongings { get; set; }
 
         public WorkContext(DbContextOptions<WorkContext> options): base(options)
         {

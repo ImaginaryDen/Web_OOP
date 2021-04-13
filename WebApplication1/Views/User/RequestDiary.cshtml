@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebApplication1.Models.Diary>
+@{
+    ViewData["Title"] = "User's Diary";
+}
+<!DOCTYPE html>
+ 
+<html>
+<head>
+    <title>User's Diary</title>
+
+</head>
+<body>
+    <h3>User's Diary</h3>
+    <table>
+        <tr>
+            <td>Имя</td>
+            <td>Описание</td>
+            <td>ID</td>
+            <td></td>
+        </tr>
+        @foreach (var user_data in Model)
+        {
+<tr>
+    <td>@user_data.Name</td>
+    <td>@user_data.Description</td>
+    <td>@user_data.ID</td>
+</tr>
+}
+    </table>
+</body>
+</html>
