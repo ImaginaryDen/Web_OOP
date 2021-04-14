@@ -51,7 +51,14 @@ namespace WebApplication1.Controllers
             List<Diary> diaries = new List<Diary>();
             diaries = database.Diaries.ToList();
             belong.DiaryID = diaries.Last().ID;
-            belong.UserID = int.Parse(User.Identity.Name);
+            try
+            {
+                belong.UserID = int.Parse(User.Identity.Name);
+            }
+            catch
+			{
+                belong.UserID = database.Users.FirstOrDefault(us => us.Email == User.Identity.Name).ID;
+            }
             database.Belongings.Add(belong);
             database.SaveChanges();
             return RedirectToAction("Index");
@@ -61,9 +68,19 @@ namespace WebApplication1.Controllers
         public ActionResult RequestDiary(int? ID)
         {
             List<Diary> diaries = new List<Diary>();
-            foreach(var item in database.Belongings.ToList().Where(x=> x.UserID == (ID ?? int.Parse(User.Identity.Name))))
+            try
             {
-                diaries.Add(database.Diaries.Find(item.DiaryID));
+                foreach (var item in database.Belongings.ToList().Where(x => x.UserID == (ID ?? int.Parse(User.Identity.Name))))
+                {
+                    diaries.Add(database.Diaries.Find(item.DiaryID));
+                }
+            }
+            catch
+			{
+                foreach (var item in database.Belongings.ToList().Where(x => x.UserID == (ID ?? database.Users.FirstOrDefault(us => us.Email == User.Identity.Name).ID)))
+                {
+                    diaries.Add(database.Diaries.Find(item.DiaryID));
+                }
             }
             return View(diaries);
         }
