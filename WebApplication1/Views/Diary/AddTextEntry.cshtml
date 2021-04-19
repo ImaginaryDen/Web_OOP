@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebApplication1.Models.TextEntry>
+@{
+    ViewData["Title"] = "NewTextEntry";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>New_user</title>
+</head>
+<body>
+    <div>
+        <h3>Новая запись</h3>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Дневник:</td>
+                    <td><input type="number" name="DiaryID" /> </td>
+                </tr>
+                <tr>
+                    <td>Запись:</td>
+                    <td><input type="text" name="Text" /></td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
