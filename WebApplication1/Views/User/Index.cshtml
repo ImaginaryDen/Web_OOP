@@ -1,8 +1,4 @@
-﻿@model IEnumerable<WebApplication1.Models.User>
-@{
-    ViewData["Title"] = "Users";
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
  
 <html>
 <head>
@@ -10,25 +6,28 @@
 
 </head>
 <body>
-    <h3>Users</h3>
-    <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Add">Add</a>
-    <table>
-		<tr>
-			<td>Имя</td>
-			<td>Фамилия</td>
-			<td>ID</td>
-			<td>Email</td>
-			<td></td>
-		</tr>
-        @foreach (var user_data in Model)
-        {
-	<tr>
-		<td>@user_data.FirstName</td>
-		<td>@user_data.LastName</td>
-		<td>@user_data.ID</td>
-		<td>@user_data.Email</td>
-	</tr>
-}
-    </table>
+	<h3>Профиль</h3>
+	<form method="post">
+		<input type="hidden" value="@ViewBag.Profile.ID" name="ID" />
+		<table>
+			<tr>
+				<td>Имя:</td>
+				<td><input type="text" value="@ViewBag.Profile.Name" name="Name" /> </td>
+			</tr>
+			<tr>
+				<td>Фамилия:</td>
+				<td><input type="text" value="@ViewBag.Profile.LastName" name="LastName" /></td>
+			</tr>
+			<tr>
+				<td>Номер телефона:</td>
+				<td><input type="text" value=@ViewBag.Profile.Phone name="Phone" /></td>
+			</tr>
+			<tr>
+				<td>Возраст:</td>
+				<td><input type="text" value=@ViewBag.Profile.Age name="Age" /></td>
+			</tr>
+			<tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+		</table>
+	</form>
 </body>
 </html>

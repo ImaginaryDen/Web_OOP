@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication1.Models;
+using WebApplication1.Models.Entities;
 
 namespace WebApplication1.Controllers
 {
@@ -16,10 +17,37 @@ namespace WebApplication1.Controllers
 		{
 			database = context;
 		}
-
+		[HttpGet]
 		public ActionResult Index()
 		{
-			return View(database.Users.ToList());
+			Profile UserProfile = new Profile();
+
+			try
+			{
+				UserProfile = database.Profiles.Find(int.Parse(User.Identity.Name));
+			}
+			catch
+			{
+				UserProfile = database.Profiles.Find(database.Users.FirstOrDefault(
+								us => us.Email == User.Identity.Name).ID);
+			}
+			ViewBag.Profile = UserProfile;
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult Index(Profile data)
+		{
+			database.Profiles.Remove(database.Profiles.Find(data.ID));
+			database.Profiles.Add(data);
+			database.SaveChanges();
+			ViewBag.Profile = data;
+			return View(data);
+		}
+
+		public ActionResult News()
+		{
+			return View(database.NewsData.ToList());
 		}
 
 		[HttpGet]

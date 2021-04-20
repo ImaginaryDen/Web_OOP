@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApplication1.Models;
+using WebApplication1.Models.Entities;
 using WebApplication1.Models.ViewModels;
 
 namespace WebApplication1.Controllers
@@ -57,6 +58,8 @@ namespace WebApplication1.Controllers
                 {
                     // добавляем пользователя в бд
                     User user_new = new User { Email = model.Email, Password = model.Password };
+                    Profile User_Profile = new Profile { ID = user_new.ID };
+                    db.Profiles.Add(User_Profile);
                     db.Users.Add(user_new);
                     await db.SaveChangesAsync();
 
