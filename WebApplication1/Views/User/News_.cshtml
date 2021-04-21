@@ -1,0 +1,27 @@
+﻿@model IEnumerable<WebApplication1.Models.News>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>User's Diary</title>
+
+</head>
+<body>
+	<table>
+		<tr>
+			<td>Новость</td>
+			<td></td>
+		</tr>
+		@foreach (var news in Model)
+		{
+			<tr>
+				<td>@news.Description</td>
+				<td>
+					<input type="button" value="Перейти" onClick='location.href="@news.Url"'>
+				</td>
+			</tr>
+		}
+	</table>
+</body>
+</html>
