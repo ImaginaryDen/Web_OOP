@@ -34,7 +34,7 @@ namespace WebApplication1.Controllers
 			ViewBag.Profile = UserProfile;
 			return View();
 		}
-
+		//
 		[HttpPost]
 		public ActionResult Index(Profile data)
 		{
