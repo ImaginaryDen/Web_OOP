@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,18 +18,21 @@ namespace WebApplication1.Controllers
             database = context;
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             return View(database.Users.ToList());
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Add(User data)
         {
             database.Users.Add(data);

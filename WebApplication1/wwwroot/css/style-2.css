@@ -1,4 +1,4 @@
-/*Шапка*/
+﻿/*Шапка*/
 .header {
     position: absolute;
     top: 0;
@@ -150,7 +150,7 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
-    margin-right: 200px;
+    margin-right: 50px;
 }
 
 .avtor {
