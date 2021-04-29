@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "New Diary";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>New Diary</title>
+</head>
+<body>
+    <div>
+        <h3>Создание нового дневника</h3>
+        <p>Для создания нового дневника заполните следующие поля:</p>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Название:</td>
+                    <td><input type="text" name="Name" /> </td>
+                </tr>
+                <tr>
+                    <td>Описание:</td>
+                    <td><input type="text" name="Description" /></td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
