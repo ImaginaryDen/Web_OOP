@@ -2,41 +2,36 @@
 	Layout = null;
 }
 <!DOCTYPE html>
+ 
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>ToDoBook</title>
-	<link rel="stylesheet" href="css/style-prof.css">
-	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <title>Users</title>
+
 </head>
 <body>
-	<header class="header">
-		<div class="header-logo">ToDoBook</div>
-		<div class="container-logo">
-			<img src="~/image/book.svg" alt="">
-		</div>
-		<nav class="nav">
-			<a class="nav_link" href="/Home">Главная</a>
-			<a class="nav_link" href="~/User">Профиль</a>
-			<a class="nav_link" href="~/User/RequestDiary">Дневники</a>
-			<a class="nav_link" href="/Home">О нас</a>
-			<a class="nav_link" href="User/News">Новости</a>
-		</nav>
-	</header>
-	<div class="mainstr">
-		<div class="user">
-			<div class="avatar">
-				<img src="image/camera.svg" width="100px" height="100px">
-			</div>
-			<div class="user-content">
-				<form method="post">
-					<input type="hidden" value="@ViewBag.Profile.ID" name="ID" />
-					<div class="user-name"><input type="text" name="Name" value="@ViewBag.Profile.Name" placeholder="Имя"></div>
-					<div class="user-surname"><input type="text" name="LastName" value="@ViewBag.Profile.LastName" placeholder="Фамилия"></div>
-					<div class="user-telephone"><input type="text" name="Phone" value="@ViewBag.Profile.Phone" placeholder="Номер"></div>
-					<div class="user-age"><input type="text" name="Age" value="@ViewBag.Profile.Age" placeholder="Возраст"></div>
-					<div class="user-sub"><input type="submit" name="" placeholder="Отправить"></div>
-				</form>
+	<h3>Профиль</h3>
+	<form method="post">
+		<input type="hidden" value="@ViewBag.Profile.ID" name="ID" />
+		<table>
+			<tr>
+				<td>Имя:</td>
+				<td><input type="text" value="@ViewBag.Profile.Name" name="Name" /> </td>
+			</tr>
+			<tr>
+				<td>Фамилия:</td>
+				<td><input type="text" value="@ViewBag.Profile.LastName" name="LastName" /></td>
+			</tr>
+			<tr>
+				<td>Номер телефона:</td>
+				<td><input type="text" value=@ViewBag.Profile.Phone name="Phone" /></td>
+			</tr>
+			<tr>
+				<td>Возраст:</td>
+				<td><input type="text" value=@ViewBag.Profile.Age name="Age" /></td>
+			</tr>
+			<tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+		</table>
+	</form>
 			</div>
 		</div>
 		<div class="footer"><div class="copy">Все права защищены &copy; 2021 ToDoBook</div></div>
