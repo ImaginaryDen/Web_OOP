@@ -1,33 +1,24 @@
-﻿<!DOCTYPE html>
+﻿@{
+	Layout = null;
+}
+<!DOCTYPE html>
  
 <html>
 <head>
-    <title>Users</title>
-
+	<meta charset="utf-8">
+	<title>ToDoBook</title>
+	<link rel="stylesheet" href="css/style-prof.css">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<h3>Профиль</h3>
-	<form method="post">
-		<input type="hidden" value="@ViewBag.Profile.ID" name="ID" />
-		<table>
-			<tr>
-				<td>Имя:</td>
-				<td><input type="text" value="@ViewBag.Profile.Name" name="Name" /> </td>
-			</tr>
-			<tr>
-				<td>Фамилия:</td>
-				<td><input type="text" value="@ViewBag.Profile.LastName" name="LastName" /></td>
-			</tr>
-			<tr>
-				<td>Номер телефона:</td>
-				<td><input type="text" value=@ViewBag.Profile.Phone name="Phone" /></td>
-			</tr>
-			<tr>
-				<td>Возраст:</td>
-				<td><input type="text" value=@ViewBag.Profile.Age name="Age" /></td>
-			</tr>
-			<tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
-		</table>
-	</form>
+				<form method="post">
+					<input type="hidden" value="@ViewBag.Profile.ID" name="ID" />
+				</form>
+			</div>
+		</div>
+		<div class="footer"><div class="copy">Все права защищены &copy; 2021 ToDoBook</div></div>
+	</div>
+
 </body>
+
 </html>
