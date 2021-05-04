@@ -14,6 +14,7 @@ namespace ToDoBook.Storage.Entity
 		public string LastName { get; set; }
 		public string Phone { get; set; }
 		public int Age { get; set; }
+		public int ImageId { get; set; }
 
 	}
 }

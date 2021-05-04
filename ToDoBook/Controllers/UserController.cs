@@ -12,6 +12,7 @@ using ToDoBook.Storage.StorgeEntity;
 using ToDoBook.Managers.DiaryM;
 using ToDoBook.Managers.EntryM;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ToDoBook.Controllers
 {
@@ -19,12 +20,12 @@ namespace ToDoBook.Controllers
 	public class UserController : Controller
 	{
 		WorkContext database;
+		IWebHostEnvironment _appEnvironment;
 
-		public Profile ProfileMangare { get; private set; }
-
-		public UserController(WorkContext context)
+		public UserController(WorkContext context, IWebHostEnvironment appEnvironment)
 		{
 			database = context;
+			_appEnvironment = appEnvironment;
 		}
 		[HttpGet]
 		public ActionResult Index()
@@ -160,6 +161,17 @@ namespace ToDoBook.Controllers
 			data.ID = 0;
 			entry.AddEntry(data, DiaryId);
 			return RedirectToAction("Show_Entry", new { ID = DiaryId });
+		}
+
+		public ActionResult EditImageProfile(IFormFile uploadedFile)
+		{
+			ProfileManager profileManager = new ProfileManager(database);
+			if(profileManager.GetIn(int.Parse(User.Identity.Name)).ImageId != 0)
+			{
+
+			}
+
+			return RedirectToAction("Index");
 		}
 	}
 }
