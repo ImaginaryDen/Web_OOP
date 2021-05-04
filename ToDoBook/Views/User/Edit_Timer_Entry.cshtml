@@ -20,8 +20,12 @@
                     <td><input type="text" value="@ViewBag.Entries.Description" name="Description" /></td>
                 </tr>
                 <tr>
+                    <td>Дата окончания:</td>
+                    <td><input type="datetime-local" value="@ViewBag.Entries.EndTime.ToString("yyyy-MM-ddThh:mm")" name="EndTime" /></td>
+                </tr>
+                <tr>
                     <td>Осталось времени:</td>
-                    <td><input type="datetime-local" value="@ViewBag.Entries.TimeLeft.ToString("yyyy-MM-ddThh:mm")" name="Time" /></td>
+                    <td>@ViewBag.Entries.TimeLeft.ToString()</td>
                 </tr>
                 <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
             </table>
