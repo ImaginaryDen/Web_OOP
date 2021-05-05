@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>New Diary</title>
+</head>
+<body>
+    <div>
+        <h3>Текставая запись</h3>
+		<form method="post">
+			<input type="hidden" value="@ViewBag.ID" name="DiaryID" />
+			<input type="hidden" value="@ViewBag.Entries.ID" name="ID" />
+            <table>
+                <tr>
+                    <td>Название:</td>
+                    <td><input type="text" value="@ViewBag.Entries.Name" name="Name" /> </td>
+                </tr>
+                <tr>
+                    <td>Описание:</td>
+                    <td><input type="text" value="@ViewBag.Entries.Description" name="Description" /></td>
+                </tr>
+                <tr>
+                    <td>Дата:</td>
+                    <td><input type="datetime-local" value="@ViewBag.Entries.Time.ToString("yyyy-MM-ddThh:mm")" name="Time" /></td>
+                </tr>
+                <tr>
+                    <td>Почта:</td>
+                    <td><input type="text" value="@ViewBag.Entries.Email" name="Email" /></td>
+                </tr>
+                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+            </table>
+		</form>
+    </div>
+</body>
+</html>

@@ -169,6 +169,42 @@ namespace ToDoBook.Controllers
 		}
 
 		[HttpGet]
+		public IActionResult Edit_Reminder_Entry(int id, int id2)
+		{
+			ViewBag.ID = id2;
+			ViewBag.Entries = database.ReminderEntries.Find(id);
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult Edit_Reminder_Entry(ReminderEntry data, int DiaryID)
+		{
+			database.ReminderEntries.Find(data.ID).Name = data.Name;
+			database.ReminderEntries.Find(data.ID).Description = data.Description;
+			database.ReminderEntries.Find(data.ID).Time = data.Time;
+			database.SaveChanges();
+			return RedirectToAction("Show_Entry", new { ID = DiaryID });
+		}
+		
+		[HttpGet]
+		public IActionResult Edit_Timer_Entry(int id, int id2)
+		{
+			ViewBag.ID = id2;
+			ViewBag.Entries = database.TimerEntries.Find(id);
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult Edit_Timer_Entry(TimerEntry data, int DiaryID)
+		{
+			database.TimerEntries.Find(data.ID).Name = data.Name;
+			database.TimerEntries.Find(data.ID).Description = data.Description;
+			database.TimerEntries.Find(data.ID).EndTime = data.EndTime;
+			database.SaveChanges();
+			return RedirectToAction("Show_Entry", new { ID = DiaryID });
+		}
+
+		[HttpGet]
 		public ActionResult AddTextEntry(int ID)
 		{
 			ViewBag.ID = ID;
@@ -217,5 +253,36 @@ namespace ToDoBook.Controllers
 			return RedirectToAction("Show_Entry", new { ID = DiaryId });
 		}
 
+		[HttpGet]
+		public ActionResult AddReminderEntry(int ID)
+		{
+			ViewBag.ID = ID;
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult AddReminderEntry(ReminderEntry data, int DiaryId)
+		{
+			EntryManager entry = new EntryManager(database);
+			data.ID = 0;
+			entry.AddEntry(data, DiaryId);
+			return RedirectToAction("Show_Entry", new { ID = DiaryId });
+		}
+
+		[HttpGet]
+		public ActionResult AddTimerEntry(int ID)
+		{
+			ViewBag.ID = ID;
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult AddTimerEntry(TimerEntry data, int DiaryId)
+		{
+			EntryManager entry = new EntryManager(database);
+			data.ID = 0;
+			entry.AddEntry(data, DiaryId);
+			return RedirectToAction("Show_Entry", new { ID = DiaryId });
+		}
 	}
 }

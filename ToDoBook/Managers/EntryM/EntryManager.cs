@@ -30,6 +30,12 @@ namespace ToDoBook.Managers.EntryM
 					case 2:
 						entry.Add(_context.MitingEntries.Find(item.EntryID));
 						break;
+					case 3:
+						entry.Add(_context.ReminderEntries.Find(item.EntryID));
+						break;
+					case 4:
+						entry.Add(_context.TimerEntries.Find(item.EntryID));
+						break;
 					case 5:
 						entry.Add(_context.Images.Find(item.EntryID));
 						break;
@@ -56,6 +62,36 @@ namespace ToDoBook.Managers.EntryM
 			_context.SaveChanges();
 			_context.Entries.Add(new EntriesBelonging { Type = 2, EntryID =
 				_context.MitingEntries.ToList().Last().ID, DiaryID = IdDiary });
+			_context.SaveChanges();
+		}
+
+		public void AddEntry(ReminderEntry entry, int IdDiary)
+		{
+			entry.Type = "Edit_Reminder_Entry";
+			_context.ReminderEntries.Add(entry);
+			_context.SaveChanges();
+			_context.Entries.Add(new EntriesBelonging
+			{
+				Type = 3,
+				EntryID =
+				_context.ReminderEntries.ToList().Last().ID,
+				DiaryID = IdDiary
+			});
+			_context.SaveChanges();
+		}
+
+		public void AddEntry(TimerEntry entry, int IdDiary)
+		{
+			entry.Type = "Edit_Timer_Entry";
+			_context.TimerEntries.Add(entry);
+			_context.SaveChanges();
+			_context.Entries.Add(new EntriesBelonging
+			{
+				Type = 4,
+				EntryID =
+				_context.TimerEntries.ToList().Last().ID,
+				DiaryID = IdDiary
+			});
 			_context.SaveChanges();
 		}
 
