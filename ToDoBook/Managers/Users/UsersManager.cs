@@ -22,12 +22,12 @@ namespace ToDoBook.Managers.Users
 				_context.Remove(RemoveUser);
 		}
 
-		public List<User> GetAll()
+		public List<UserData> GetAll()
 		{
 			return _context.Users.ToList();
 		}
 
-		public User GetIn(int i)
+		public UserData GetIn(int i)
 		{
 			return _context.Users.FirstOrDefault(user => user.ID == i);
 		}

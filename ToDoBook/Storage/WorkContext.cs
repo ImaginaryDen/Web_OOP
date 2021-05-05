@@ -10,7 +10,7 @@ namespace ToDoBook.Storage
 {
     public class WorkContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
+        public DbSet<UserData> Users { get; set; }
         public DbSet<Diary> Diaries { get; set; }
         public DbSet<Belonging> Belongings { get; set; }
         public DbSet<EntriesBelonging> Entries { get; set; }
@@ -18,7 +18,7 @@ namespace ToDoBook.Storage
         public DbSet<MitingEntry> MitingEntries { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<News> NewsData { get; set; }
-        public DbSet<ImageUsers> Images { get; set; }
+        public DbSet<ImageEntry> Images { get; set; }
 
         public WorkContext(DbContextOptions<WorkContext> options): base(options)
         {

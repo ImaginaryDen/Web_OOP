@@ -8,8 +8,8 @@ namespace ToDoBook.Managers.Users
 {
 	interface IUsersManager
 	{
-		List<User> GetAll();
-		User GetIn(int i);
+		List<UserData> GetAll();
+		UserData GetIn(int i);
 		void DelUser(int i);
 	}
 }

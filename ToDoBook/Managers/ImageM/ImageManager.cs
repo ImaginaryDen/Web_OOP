@@ -8,6 +8,7 @@ using System.Web;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using ToDoBook.Managers.Profiles;
 
 namespace ToDoBook.Managers.ImageM
 {
@@ -21,19 +22,31 @@ namespace ToDoBook.Managers.ImageM
 			_context = context;
 		}
 
-		public async void AddImage(IFormFile uploadedFile)
+		public void AddAvatar(IFormFile pvm, int UserID)
 		{
-			if (uploadedFile != null)
+			ImageEntry person = new ImageEntry();
+			ProfileManager profile = new ProfileManager(_context);
+
+			if (pvm != null)
 			{
-				string path = "/Files/" + uploadedFile.FileName;
-				using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+				byte[] imageData = null;
+				using (var binaryReader = new BinaryReader(pvm.OpenReadStream()))
 				{
-					await uploadedFile.CopyToAsync(fileStream);
+					imageData = binaryReader.ReadBytes((int)pvm.Length);
 				}
-				ImageUsers file = new ImageUsers { Name = uploadedFile.FileName, Path = path };
-				_context.Images.Add(file);
-				_context.SaveChanges();
+				person.Image = imageData;
 			}
+
+			int id = profile.GetIn(UserID).ImageId;
+			if (id != 0)
+				_context.Images.FirstOrDefault(Im => Im.ID == id).Image = person.Image;
+			else
+			{
+				_context.Images.Add(person);
+				_context.SaveChanges();
+				_context.Profiles.FirstOrDefault(profile => profile.ID == UserID).ImageId = _context.Images.ToList().Last().ID;
+			}
+			_context.SaveChanges();
 		}
 	}
 }

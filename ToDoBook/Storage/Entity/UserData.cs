@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ToDoBook.Storage.Entity
 {
-    public class User
+    public class UserData
     {
-        [Key]
+		[Key]
         public int ID { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }

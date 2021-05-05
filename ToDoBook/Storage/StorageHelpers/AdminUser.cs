@@ -14,7 +14,7 @@ namespace ToDoBook.Storage.StorgeEntity
             if (!context.Users.Any())
             {
                 context.Users.Add(
-                    new User
+                    new UserData
                     {
                         Email = "Admin",
                         Password = "Admin"

@@ -31,7 +31,7 @@ namespace ToDoBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
+                UserData user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
                     await Authenticate(user.ID.ToString()); // аутентификация
@@ -52,11 +52,11 @@ namespace ToDoBook.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                UserData user = await db.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
                 if (user == null)
                 {
                     // добавляем пользователя в бд
-                    User user_new = new User { Email = model.Email, Password = model.Password };
+                    UserData user_new = new UserData { Email = model.Email, Password = model.Password };
                     Profile User_Profile = new Profile { ID = user_new.ID };
                     db.Profiles.Add(User_Profile);
                     db.Users.Add(user_new);

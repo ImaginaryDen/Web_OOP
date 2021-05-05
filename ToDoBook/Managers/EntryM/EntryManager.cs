@@ -30,6 +30,9 @@ namespace ToDoBook.Managers.EntryM
 					case 2:
 						entry.Add(_context.MitingEntries.Find(item.EntryID));
 						break;
+					case 5:
+						entry.Add(_context.Images.Find(item.EntryID));
+						break;
 				}
 			}
 
@@ -53,6 +56,21 @@ namespace ToDoBook.Managers.EntryM
 			_context.SaveChanges();
 			_context.Entries.Add(new EntriesBelonging { Type = 2, EntryID =
 				_context.MitingEntries.ToList().Last().ID, DiaryID = IdDiary });
+			_context.SaveChanges();
+		}
+
+		public void AddEntry(ImageEntry entry, int IdDiary)
+		{
+			entry.Type = "Edit_Image_Entry";
+			_context.Images.Add(entry);
+			_context.SaveChanges();
+			_context.Entries.Add(new EntriesBelonging
+			{
+				Type = 5,
+				EntryID =
+				_context.Images.ToList().Last().ID,
+				DiaryID = IdDiary
+			});
 			_context.SaveChanges();
 		}
 

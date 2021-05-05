@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>New Diary</title>
+</head>
+<body>
+	<div>
+		<h3>Текставая запись</h3>
+		@if (ViewBag.Image != null)
+		{
+			<img width="100px" height="100px" src="data:image/jpeg;base64,@(Convert.ToBase64String(ViewBag.Image))" />
+		}
+		else
+		{
+			<img src="~/image/book.svg" width="100px" height="100px">
+		}
+		<form method="post" enctype="multipart/form-data">
+			<input type="hidden" value="@ViewBag.ID" name="DiaryID" />
+			<input type="hidden" value="@ViewBag.Entries.ID" name="ID" />
+			<table>
+				<tr>
+					<td>Название:</td>
+					<td><input type="text" value="@ViewBag.Entries.Name" name="Name" /> </td>
+				</tr>
+				<tr>
+					<td>Описание:</td>
+					<td><input type="text" value="@ViewBag.Entries.Description" name="Description" /></td>
+				</tr>
+				<tr>
+					<td>Фото:</td>
+					<td><input name="pvm" type="file" class="form-control" /></td>
+				</tr>
+				<tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

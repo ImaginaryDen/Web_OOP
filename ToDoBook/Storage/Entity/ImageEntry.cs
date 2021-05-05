@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace ToDoBook.Storage.Entity
 {
-	public class ImageUsers
+	public class ImageEntry : Entry
 	{
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public string Path { get; set; }
+		public byte[] Image { get; set; }
 	}
 }
