@@ -36,7 +36,7 @@ namespace ToDoBook.Managers.EntryM
 					case 4:
 						entry.Add(_context.TimerEntries.Find(item.EntryID));
 						break;
-					case 5:
+					case 6:
 						entry.Add(_context.ChecklistEntries.Find(item.EntryID));
 						break;
 				}
@@ -102,7 +102,7 @@ namespace ToDoBook.Managers.EntryM
 			_context.SaveChanges();
 			_context.Entries.Add(new EntriesBelonging
 			{
-				Type = 5,
+				Type = 6,
 				EntryID =
 				_context.ChecklistEntries.ToList().Last().ID,
 				DiaryID = IdDiary
