@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "NewTextEntry";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>New_user</title>
+</head>
+<body>
+    <div>
+        <h3>Новая запись</h3>
+		<form method="post">
+			<input type="hidden" value="@ViewBag.ID" name="DiaryID" />
+			<table>
+				<tr>
+					<td>Имя:</td>
+					<td><input type="text" name="Name" /></td>
+				</tr>
+				<tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+			</table>
+		</form>
+    </div>
+</body>
+</html>

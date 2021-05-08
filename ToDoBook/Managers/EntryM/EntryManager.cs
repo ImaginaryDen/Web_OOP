@@ -36,6 +36,9 @@ namespace ToDoBook.Managers.EntryM
 					case 4:
 						entry.Add(_context.TimerEntries.Find(item.EntryID));
 						break;
+					case 6:
+						entry.Add(_context.ChecklistEntries.Find(item.EntryID));
+						break;
 					case 5:
 						entry.Add(_context.Images.Find(item.EntryID));
 						break;
@@ -95,6 +98,20 @@ namespace ToDoBook.Managers.EntryM
 			_context.SaveChanges();
 		}
 
+		public void AddEntry(ChecklistEntry entry, int IdDiary)
+		{
+			entry.Type = "Edit_Checklist_Entry";
+			_context.ChecklistEntries.Add(entry);
+			_context.SaveChanges();
+			_context.Entries.Add(new EntriesBelonging
+			{
+				Type = 6,
+				EntryID =
+				_context.ChecklistEntries.ToList().Last().ID,
+				DiaryID = IdDiary
+			});
+			_context.SaveChanges();
+		}
 		public void AddEntry(ImageEntry entry, int IdDiary)
 		{
 			entry.Type = "Edit_Image_Entry";

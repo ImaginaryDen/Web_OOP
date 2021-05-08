@@ -205,6 +205,51 @@ namespace ToDoBook.Controllers
 		}
 
 		[HttpGet]
+		public IActionResult Edit_Checklist_Entry(int id, int id2)
+		{
+			ChecklistEntry checklist = database.ChecklistEntries.Find(id);
+
+			ViewBag.ID = id2;
+			if(checklist.Positions == 0)
+			{
+				List<Check> test = new List<Check>();
+				test.Add(new Check("Привет", true));
+				checklist.Set(test);
+			}
+			ViewBag.Entries = checklist;
+			return View(checklist.ToList());
+		}
+
+		[HttpPost]
+		public ActionResult Edit_Checklist_Entry(List<Check> model, ChecklistEntry data, int DiaryID, string action)
+		{
+			if (action == "Отправить")
+			{
+				database.ChecklistEntries.Find(data.ID).Name = data.Name;
+				database.ChecklistEntries.Find(data.ID).Description = data.Description;
+				database.ChecklistEntries.Find(data.ID).Set(model);
+				database.SaveChanges();
+				return RedirectToAction("Show_Entry", new { ID = DiaryID });
+			}
+			else if (action == "Добавить чек")
+			{
+				{
+					model.Add(new Check());
+					database.ChecklistEntries.Find(data.ID).Set(model);
+					database.SaveChanges();
+					return RedirectToAction("Edit_Checklist_Entry", new { id = data.ID, id2 = DiaryID });
+				}
+			}
+            else
+            {
+				model.Remove(model.Last());
+				database.ChecklistEntries.Find(data.ID).Set(model);
+				database.SaveChanges();
+				return RedirectToAction("Edit_Checklist_Entry", new { id = data.ID, id2 = DiaryID });
+			}
+		}
+
+		[HttpGet]
 		public ActionResult AddTextEntry(int ID)
 		{
 			ViewBag.ID = ID;
@@ -280,6 +325,22 @@ namespace ToDoBook.Controllers
 		public ActionResult AddTimerEntry(TimerEntry data, int DiaryId)
 		{
 			EntryManager entry = new EntryManager(_context);
+			data.ID = 0;
+			entry.AddEntry(data, DiaryId);
+			return RedirectToAction("Show_Entry", new { ID = DiaryId });
+		}
+
+		[HttpGet]
+		public ActionResult AddChecklistEntry(int ID)
+		{
+			ViewBag.ID = ID;
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult AddChecklistEntry(ChecklistEntry data, int DiaryId)
+		{
+			EntryManager entry = new EntryManager(database);
 			data.ID = 0;
 			entry.AddEntry(data, DiaryId);
 			return RedirectToAction("Show_Entry", new { ID = DiaryId });
