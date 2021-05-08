@@ -207,7 +207,7 @@ namespace ToDoBook.Controllers
 		[HttpGet]
 		public IActionResult Edit_Checklist_Entry(int id, int id2)
 		{
-			ChecklistEntry checklist = database.ChecklistEntries.Find(id);
+			ChecklistEntry checklist = _context.ChecklistEntries.Find(id);
 
 			ViewBag.ID = id2;
 			if(checklist.Positions == 0)
@@ -225,26 +225,26 @@ namespace ToDoBook.Controllers
 		{
 			if (action == "Отправить")
 			{
-				database.ChecklistEntries.Find(data.ID).Name = data.Name;
-				database.ChecklistEntries.Find(data.ID).Description = data.Description;
-				database.ChecklistEntries.Find(data.ID).Set(model);
-				database.SaveChanges();
+				_context.ChecklistEntries.Find(data.ID).Name = data.Name;
+				_context.ChecklistEntries.Find(data.ID).Description = data.Description;
+				_context.ChecklistEntries.Find(data.ID).Set(model);
+				_context.SaveChanges();
 				return RedirectToAction("Show_Entry", new { ID = DiaryID });
 			}
 			else if (action == "Добавить чек")
 			{
 				{
 					model.Add(new Check());
-					database.ChecklistEntries.Find(data.ID).Set(model);
-					database.SaveChanges();
+					_context.ChecklistEntries.Find(data.ID).Set(model);
+					_context.SaveChanges();
 					return RedirectToAction("Edit_Checklist_Entry", new { id = data.ID, id2 = DiaryID });
 				}
 			}
             else
             {
 				model.Remove(model.Last());
-				database.ChecklistEntries.Find(data.ID).Set(model);
-				database.SaveChanges();
+				_context.ChecklistEntries.Find(data.ID).Set(model);
+				_context.SaveChanges();
 				return RedirectToAction("Edit_Checklist_Entry", new { id = data.ID, id2 = DiaryID });
 			}
 		}
@@ -340,7 +340,7 @@ namespace ToDoBook.Controllers
 		[HttpPost]
 		public ActionResult AddChecklistEntry(ChecklistEntry data, int DiaryId)
 		{
-			EntryManager entry = new EntryManager(database);
+			EntryManager entry = new EntryManager(_context);
 			data.ID = 0;
 			entry.AddEntry(data, DiaryId);
 			return RedirectToAction("Show_Entry", new { ID = DiaryId });
