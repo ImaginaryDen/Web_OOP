@@ -166,6 +166,24 @@ namespace ToDoBook.Controllers
 		}
 
 		[HttpGet]
+		public IActionResult Edit_Cheklist_Entry(int id, int id2)
+		{
+			ViewBag.ID = id2;
+			ViewBag.Entries = database.ChecklistEntries.Find(id);
+			return View(ViewBag.Entries.ToList());
+		}
+
+		[HttpPost]
+		public ActionResult Edit_Checklist_Entry(ChecklistEntry data, int DiaryID)
+		{
+			database.ChecklistEntries.Find(data.ID).Name = data.Name;
+			database.ChecklistEntries.Find(data.ID).Description = data.Description;
+
+			database.SaveChanges();
+			return RedirectToAction("Show_Entry", new { ID = DiaryID });
+		}
+
+		[HttpGet]
 		public ActionResult AddTextEntry(int ID)
 		{
 			ViewBag.ID = ID;
@@ -223,6 +241,22 @@ namespace ToDoBook.Controllers
 
 		[HttpPost]
 		public ActionResult AddTimerEntry(TimerEntry data, int DiaryId)
+		{
+			EntryManager entry = new EntryManager(database);
+			data.ID = 0;
+			entry.AddEntry(data, DiaryId);
+			return RedirectToAction("Show_Entry", new { ID = DiaryId });
+		}
+
+		[HttpGet]
+		public ActionResult AddChecklistEntry(int ID)
+		{
+			ViewBag.ID = ID;
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult AddChecklistEntry(ChecklistEntry data, int DiaryId)
 		{
 			EntryManager entry = new EntryManager(database);
 			data.ID = 0;

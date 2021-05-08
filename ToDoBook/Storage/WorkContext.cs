@@ -18,6 +18,7 @@ namespace ToDoBook.Storage
         public DbSet<MitingEntry> MitingEntries { get; set; }
         public DbSet<ReminderEntry> ReminderEntries { get; set; }
         public DbSet<TimerEntry> TimerEntries { get; set; }
+        public DbSet<ChecklistEntry> ChecklistEntries { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<News> NewsData { get; set; }
 
