@@ -19,8 +19,16 @@ namespace ToDoBook.Storage.Entity
 
         public ChecklistEntry(List<Check> checks)
         {
+            Set(checks);
+        }
+
+        public void Set(List<Check> checks)
+        {
             Positions = 0;
-            foreach(var check in checks)
+            Contents = "";
+            Positions = 0;
+            TrueFalses = "";
+            foreach (var check in checks)
             {
                 Contents += check.Name + '\n';
                 TrueFalses += check.State ? '1' : '0';
@@ -50,5 +58,7 @@ namespace ToDoBook.Storage.Entity
             Name = name;
             State = state;
         }
+        public Check()
+        {}
     }
 }

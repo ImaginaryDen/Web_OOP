@@ -166,19 +166,27 @@ namespace ToDoBook.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Edit_Cheklist_Entry(int id, int id2)
+		public IActionResult Edit_Checklist_Entry(int id, int id2)
 		{
+			ChecklistEntry checklist = database.ChecklistEntries.Find(id);
+
 			ViewBag.ID = id2;
-			ViewBag.Entries = database.ChecklistEntries.Find(id);
-			return View(ViewBag.Entries.ToList());
+			if(checklist.Positions == 0)
+			{
+				List<Check> test = new List<Check>();
+				test.Add(new Check("Привет", false));
+				checklist.Set(test);
+			}
+			ViewBag.Entries = checklist;
+			return View(checklist.ToList());
 		}
 
 		[HttpPost]
-		public ActionResult Edit_Checklist_Entry(ChecklistEntry data, int DiaryID)
+		public ActionResult Edit_Checklist_Entry(List<Check> model, ChecklistEntry data, int DiaryID)
 		{
 			database.ChecklistEntries.Find(data.ID).Name = data.Name;
 			database.ChecklistEntries.Find(data.ID).Description = data.Description;
-
+			database.ChecklistEntries.Find(data.ID).Set(model);
 			database.SaveChanges();
 			return RedirectToAction("Show_Entry", new { ID = DiaryID });
 		}
