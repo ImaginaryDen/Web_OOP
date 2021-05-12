@@ -1,35 +1,60 @@
 ﻿@model IEnumerable<ToDoBook.Storage.Entity.Diary>
 @{
-    ViewData["Title"] = "User's Diary";
+    Layout = null;
 }
 <!DOCTYPE html>
- 
 <html>
 <head>
-    <title>User's Diary</title>
-
+    <meta charset="utf-8">
+    <title>Дневники</title>
+    <link rel="stylesheet" href="~/css/diary.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h3>User's Diary</h3>
-    <table>
-        <tr>
-            <td>Имя</td>
-            <td>Описание</td>
-            <td>ID</td>
-            <td></td>
-        </tr>
-        @foreach (var user_data in Model)
-        {
-	<tr>
-		<td>@user_data.Name</td>
-		<td>@user_data.Description</td>
-		<td>@user_data.ID</td>
-		<td>
-			<a asp-action="Show_Entry" asp-route-id="@user_data.ID">Edit</a> |
-			<a asp-action="DeleteDiary" asp-route-id="@user_data.ID">Delete</a>
-		</td>
-	</tr>
-}
-    </table>
+    <header class="header">
+        <div class="header-logo">ToDoBook</div>
+        <div class="container-logo">
+            <img src="image/book.svg" alt="">
+        </div>
+        <nav class="nav">
+            <a class="nav_link" href="Main-2.html">Главная</a>
+            <a class="nav_link" href="Profile.html">Профиль</a>
+            <a class="nav_link" href="Diary.html">Дневники</a>
+            <a class="nav_link" href="Main-2.html">О нас</a>
+            <a class="nav_link" href="News.html">Новости</a>
+        </nav>
+    </header>
+
+    <div class="mainstr">
+        <div class="content">
+            <div class="zag">Дневники пользователя</div>
+            <table class="table">
+                <tr>
+                    <td>Название</td>
+                    <td>Описание</td>
+                    <td><a class="Adddiary" href="">Добавить дневник</a></td>
+                </tr>
+                @foreach (var user_data in Model)
+                {
+                    <tr>
+                        <td style="width:150px;
+									 word-break: break-all">
+                            @user_data.Name
+                                </td>
+                                <td style="width:150px;
+									 word-break: break-all">
+                                    @user_data.Description
+                                </td>
+                                <td>
+                                    <a asp-action="Show_Entry" asp-route-id="@user_data.ID" class="Edit">Изменить</a>
+                                    <a asp-action="DeleteDiary" asp-route-id="@user_data.ID" class="Delete">Удалить</a>
+                                </td>
+                            </tr>
+                        }
+            </table>
+        </div>
+        <div class="footer"><div class="copy">Все права защищены &copy; 2021 ToDoBook</div></div>
+    </div>
 </body>
+
 </html>

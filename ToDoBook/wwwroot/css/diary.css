@@ -1,0 +1,183 @@
+﻿/*Шапка*/
+.header {
+    position: absolute;
+    top: 0;
+    left: 150px;
+    right: 150px;
+    width: 1620px;
+    height: 60px;
+    background-color: #023140;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Logo {
+    text-decoration: none;
+    user-select: none;
+}
+
+.header-logo {
+    margin: 0 30px;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff
+}
+
+    .header-logo:hover {
+        color: #fae26b;
+    }
+
+.container-logo {
+    position: absolute;
+    top: 5px;
+    left: 175px;
+    right: 165px;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    border-color: #828185;
+    background-color: #828185;
+}
+
+.nav {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-right: 200px;
+    user-select: none;
+    margin-right: 50px;
+}
+
+.nav_link {
+    color: #fff;
+    text-decoration: none;
+    transition: color .2s linear;
+    vertical-align: top;
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+    .nav_link:hover {
+        color: #fae26b;
+    }
+/*Шапка*/
+/*Фон*/
+.mainstr {
+    position: absolute;
+    height: 100vh;
+    width: 1620px;
+    height: 100%;
+    background-color: #e9f0c0;
+    left: 150px;
+    right: 150px;
+    top: 60px;
+}
+/*Фон*/
+/*Доска*/
+.content {
+    position: absolute;
+    top: 150px;
+    left: 210px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: white;
+    width: 1200px;
+    height: auto;
+    position: absolute;
+    background-color: #023140;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.zag {
+    margin-top: 20px;
+    position: absolute;
+    left: 35%;
+    font-size: 28px;
+}
+
+.table {
+    margin-top: 30px;
+    border-spacing: 50px 70px;
+    font-size: 20px;
+    table-layout: fixed;
+    width: 1200px;
+    height: auto;
+}
+
+.td {
+    word-wrap: break-word;
+}
+
+.Edit {
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    border: 3px solid #b8e994;
+    transition: 0.25s;
+    border-radius: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+    .Edit:hover {
+        background-color: #b8e994;
+        color: black;
+    }
+
+.Delete {
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    border: 3px solid #b8e994;
+    transition: 0.25s;
+    border-radius: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+    .Delete:hover {
+        background-color: #b8e994;
+        color: black;
+    }
+
+.Adddiary {
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    border: 3px solid #b8e994;
+    transition: 0.25s;
+    border-radius: 20px;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+    .Adddiary:hover {
+        background-color: #b8e994;
+        color: black;
+    }
+
+.footer {
+    position: absolute;
+    width: 1620px;
+    height: 60px;
+    bottom: 0px;
+    left: 0px;
+    background-color: #023140;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: #fff;
+}
+
+.copy {
+    margin-left: 50px;
+    margin-top: 15px;
+}
+/*Доска*/
