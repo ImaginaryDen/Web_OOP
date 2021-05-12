@@ -25,7 +25,7 @@
 		<td>@user_diary.ID</td>
 		<td>
 			<a asp-action=@user_diary.Type asp-route-id="@user_diary.ID" asp-route-id2="@ViewBag.ID">Edit</a> |
-			<a asp-action="Delete" asp-route-id="@user_diary.ID">Delete</a>
+			<a asp-action="DeleteEntry" asp-route-id="@user_diary.ID">Delete</a>
 		</td>
 	</tr>
 }

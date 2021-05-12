@@ -345,12 +345,21 @@ namespace ToDoBook.Controllers
 			entry.AddEntry(data, DiaryId);
 			return RedirectToAction("Show_Entry", new { ID = DiaryId });
 		}
+
 		public ActionResult DeleteDiary(int ID)
 		{
 			DiaryManager diaryManager = new DiaryManager(_context);
 
 			diaryManager.DeleteDiaries(ID);
 			return RedirectToAction("RequestDiary");
+		}
+
+		public ActionResult DeleteEntry(int ID)
+		{
+			EntryManager entryManager = new EntryManager(_context);
+
+			entryManager.DeleteEntry(ID);
+			return RedirectToAction("Show_Entry");
 		}
 
 	}
