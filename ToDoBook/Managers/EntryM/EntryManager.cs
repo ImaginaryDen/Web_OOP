@@ -48,6 +48,36 @@ namespace ToDoBook.Managers.EntryM
 			return entry;
 		}
 
+		public void DelEntries(int IdDiary)
+		{
+
+			foreach (var item in _context.Entries.ToList().Where(x => x.DiaryID == IdDiary))
+			{
+				switch (item.Type)
+				{
+					case 1:
+						_context.TextEntries.Remove(_context.TextEntries.Find(item.EntryID));
+						break;
+					case 2:
+						_context.MitingEntries.Remove(_context.MitingEntries.Find(item.EntryID));
+						break;
+					case 3:
+						_context.ReminderEntries.Remove(_context.ReminderEntries.Find(item.EntryID));
+						break;
+					case 4:
+						_context.TimerEntries.Remove(_context.TimerEntries.Find(item.EntryID));
+						break;
+					case 6:
+						_context.ChecklistEntries.Remove(_context.ChecklistEntries.Find(item.EntryID));
+						break;
+					case 5:
+						_context.Images.Remove(_context.Images.Find(item.EntryID));
+						break;
+				}
+			}
+			_context.SaveChanges();
+		}
+
 		public void AddEntry(TextEntry entry, int IdDiary)
 		{
 			entry.Type = "Edit_Text_Entry";
