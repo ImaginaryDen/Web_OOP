@@ -211,12 +211,6 @@ namespace ToDoBook.Controllers
 			ChecklistEntry checklist = _context.ChecklistEntries.Find(id);
 
 			ViewBag.ID = id2;
-			if(checklist.Positions == 0)
-			{
-				List<Check> test = new List<Check>();
-				test.Add(new Check("Привет", true));
-				checklist.Set(test);
-			}
 			ViewBag.Entries = checklist;
 			return View(checklist.ToList());
 		}

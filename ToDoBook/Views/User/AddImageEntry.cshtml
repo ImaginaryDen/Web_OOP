@@ -18,20 +18,20 @@
         <div class="container-logo">
             <img src="image/book.svg" alt="">
         </div>
-        <nav class="nav">
-            <a class="nav_link" href="Main-2.html">Главная</a>
-            <a class="nav_link" href="Profile.html">Профиль</a>
-            <a class="nav_link" href="Diary.html">Дневники</a>
-            <a class="nav_link" href="Main-2.html">О нас</a>
-            <a class="nav_link" href="News.html">Новости</a>
-        </nav>
+		<nav class="nav">
+			<a class="nav_link" href="/Home">Главная</a>
+			<a class="nav_link" href="~/User">Профиль</a>
+			<a class="nav_link" href="~/User/RequestDiary">Дневники</a>
+			<a class="nav_link" href="/Home">О нас</a>
+			<a class="nav_link" href="~/User/News">Новости</a>
+		</nav>
     </header>
 
     <div class="mainstr">
         <div class="content">
             <div class="zag">Новая запись</div>
             <form class="entrytext" method="post">
-                <input type="hidden" value="" name="DiaryId" />
+                <input type="hidden" value="@ViewBag.ID" name="DiaryId" />
                 <table class="table">
                     <tr>
                         <td>Имя:</td>

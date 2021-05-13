@@ -18,13 +18,13 @@
         <div class="container-logo">
             <img src="image/book.svg" alt="">
         </div>
-        <nav class="nav">
-            <a class="nav_link" href="Main-2.html">Главная</a>
-            <a class="nav_link" href="Profile.html">Профиль</a>
-            <a class="nav_link" href="Diary.html">Дневники</a>
-            <a class="nav_link" href="Main-2.html">О нас</a>
-            <a class="nav_link" href="News.html">Новости</a>
-        </nav>
+		<nav class="nav">
+			<a class="nav_link" href="/Home">Главная</a>
+			<a class="nav_link" href="~/User">Профиль</a>
+			<a class="nav_link" href="~/User/RequestDiary">Дневники</a>
+			<a class="nav_link" href="/Home">О нас</a>
+			<a class="nav_link" href="~/User/News">Новости</a>
+		</nav>
     </header>
 
     <div class="mainstr">
@@ -36,13 +36,12 @@
                 <table class="table">
                     <tr>
                         <td>Название:</td>
-                        <td><input type="text" placeholder="@ViewBag.Entries.Name" /></td>
+                        <td><input type="text"  value="@ViewBag.Entries.Name" placeholder="@ViewBag.Entries.Name" name="Name" /></td>
 
                     </tr>
                     <tr>
                         <td>Описание:</td>
-                        <td><input type="text" placeholder="@ViewBag.Entries.Description" /></td>
-
+                        <td><input type="text" value="@ViewBag.Entries.Description" placeholder="@ViewBag.Entries.Description" name="Description" /></td>
                     </tr>
                     @for (int i = 0; i < Model.Count; i++)
                     {
@@ -53,9 +52,9 @@
                         </tr>
                     }
                     <tr>
-                        <td><input type="submit" value="Добавить чек" /></td>
-                        <td><input type="submit" value="Удалить чек" /></td>
-                        <td><input type="submit" value="Отправить" /></td>
+                        <td><input type="submit" value="Добавить чек" name="action"/></td>
+                        <td><input type="submit" value="Удалить чек" name="action"/></td>
+                        <td><input type="submit" value="Отправить" name="action"/></td>
                     </tr>
                 </table>
             </form>
