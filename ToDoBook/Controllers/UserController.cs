@@ -79,6 +79,7 @@ namespace ToDoBook.Controllers
 		public ActionResult AddDiary()
 		{
 			return View();
+			return View();
 		}
 
 		[HttpPost]
@@ -87,7 +88,7 @@ namespace ToDoBook.Controllers
 			DiaryManager diary = new DiaryManager(_context);
 			diary.AddDiary(data, int.Parse(User.Identity.Name));
 
-			return RedirectToAction("Index");
+			return RedirectToAction("RequestDiary");
 		}
 
 		public ActionResult RequestDiary(int? ID)
