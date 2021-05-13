@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script src="~/js/scriptt.js"></script>
     <header class="header">
         <div class="header-logo">ToDoBook</div>
         <div class="container-logo">
@@ -38,7 +39,19 @@
                 <tr>
                     <td>Имя</td>
                     <td>Описание</td>
-                    <td></td>
+                    <td>
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">Добавить запись</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <a href="AddTextEntry">Текстовую</a>
+                                <a href="AddChecklistEntry">Чеклист</a>
+                                <a href="AddReminderEntry">Напоминание</a>
+                                <a href="AddImageEntry">С картинкой</a>
+                                <a href="AddTimeEntry">С таймером</a>
+                                <a href="AddMitingEntry">Встреча</a>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 @foreach (var user_diary in Model)
                 {
