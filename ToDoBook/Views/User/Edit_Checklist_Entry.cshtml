@@ -1,38 +1,105 @@
 ﻿@model List<ToDoBook.Storage.Entity.Check>
+@{
+    Layout = null;
+}
+
 
 <!DOCTYPE html>
-
 <html>
 <head>
-	<title>New Diary</title>
+    <meta charset="utf-8">
+    <title>ToDoBook</title>
+    <link rel="stylesheet" href="css/entrycheck.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div>
-		<h3>Чеклист</h3>
-		<form class="List<Check>" method="post">
-			<input type="hidden" value="@ViewBag.ID" name="DiaryID" />
-			<input type="hidden" value="@ViewBag.Entries.ID" name="ID" />
-            <table>
-                <tr>
-                    <td>Название:</td>
-                    <td><input type="text" value="@ViewBag.Entries.Name" name="Name" /> </td>
-                </tr>
-                <tr>
-                    <td>Описание:</td>
-                    <td><input type="text" value="@ViewBag.Entries.Description" name="Description" /></td>
-                </tr>
-                @for (int i = 0; i < Model.Count; i++)
-                {
+    <header class="header">
+        <div class="header-logo">ToDoBook</div>
+        <div class="container-logo">
+            <img src="image/book.svg" alt="">
+        </div>
+        <nav class="nav">
+            <a class="nav_link" href="Main-2.html">Главная</a>
+            <a class="nav_link" href="Profile.html">Профиль</a>
+            <a class="nav_link" href="Diary.html">Дневники</a>
+            <a class="nav_link" href="Main-2.html">О нас</a>
+            <a class="nav_link" href="News.html">Новости</a>
+        </nav>
+    </header>
+
+    <div class="mainstr">
+        <div class="content">
+            <div class="zag">Чеклист</div>
+            <form class="entrytext" method="post">
+                <input type="hidden" value="@ViewBag.ID" name="DiaryId" />
+                <input type="hidden" value="@ViewBag.Entries.ID" name="Id" />
+                <table class="table">
                     <tr>
-                        <td><input type="text" value="@Model[i].Name" asp-for="@Model[i].Name" /> </td>
-                        <td>@Html.CheckBoxFor(m => Model[i].State) </td>
+                        <td>Название:</td>
+                        <td><input type="text" placeholder="@ViewBag.Entries.Name" /></td>
+
                     </tr>
-                }
-                <tr><td> <input type="submit" value="Добавить чек" name="action" /> </td><td></td></tr>
-                <tr><td> <input type="submit" value="Удалить чек" name="action" /> </td><td></td></tr>
-                <tr><td> <input type="submit" value="Отправить" name="action" /> </td><td></td></tr>
-            </table>
-		</form>
-	</div>
+                    <tr>
+                        <td>Описание:</td>
+                        <td><input type="text" placeholder="@ViewBag.Entries.Description" /></td>
+
+                    </tr>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td><input type="text" placeholder="@Model[i].Name" asp-for="@Model[i].Name" /></td>
+                            <td>@Html.CheckBoxFor(m => Model[i].State)</td>
+
+                        </tr>
+                    }
+                    <tr>
+                        <td><input type="submit" value="Добавить чек" /></td>
+                        <td><input type="submit" value="Удалить чек" /></td>
+                        <td><input type="submit" value="Отправить" /></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="footer"><div class="copy">Все права защищены &copy; 2021 ToDoBook</div></div>
+    </div>
 </body>
+
 </html>
+
+
+@*<!DOCTYPE html>
+
+    <html>
+    <head>
+        <title>New Diary</title>
+    </head>
+    <body>
+        <div>
+            <h3>Чеклист</h3>
+            <form class="List<Check>" method="post">
+                <input type="hidden" value="@ViewBag.ID" name="DiaryID" />
+                <input type="hidden" value="@ViewBag.Entries.ID" name="ID" />
+                <table>
+                    <tr>
+                        <td>Название:</td>
+                        <td><input type="text" value="@ViewBag.Entries.Name" name="Name" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Описание:</td>
+                        <td><input type="text" value="@ViewBag.Entries.Description" name="Description" /></td>
+                    </tr>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td><input type="text" value="@Model[i].Name" asp-for="@Model[i].Name" /> </td>
+                            <td>@Html.CheckBoxFor(m => Model[i].State) </td>
+                        </tr>
+                    }
+                    <tr><td> <input type="submit" value="Добавить чек" name="action" /> </td><td></td></tr>
+                    <tr><td> <input type="submit" value="Удалить чек" name="action" /> </td><td></td></tr>
+                    <tr><td> <input type="submit" value="Отправить" name="action" /> </td><td></td></tr>
+                </table>
+            </form>
+        </div>
+    </body>
+    </html>*@
