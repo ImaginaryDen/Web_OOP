@@ -230,6 +230,9 @@ namespace ToDoBook.Controllers
 			else if (action == "Добавить чек")
 			{
 				{
+					_context.ChecklistEntries.Find(data.ID).Name = data.Name;
+					_context.ChecklistEntries.Find(data.ID).Description = data.Description;
+					_context.ChecklistEntries.Find(data.ID).Set(model);
 					model.Add(new Check());
 					_context.ChecklistEntries.Find(data.ID).Set(model);
 					_context.SaveChanges();
@@ -238,6 +241,9 @@ namespace ToDoBook.Controllers
 			}
             else
             {
+				_context.ChecklistEntries.Find(data.ID).Name = data.Name;
+				_context.ChecklistEntries.Find(data.ID).Description = data.Description;
+				_context.ChecklistEntries.Find(data.ID).Set(model);
 				model.Remove(model.Last());
 				_context.ChecklistEntries.Find(data.ID).Set(model);
 				_context.SaveChanges();
