@@ -24,11 +24,11 @@
             <img src="image/book.svg" alt="">
         </div>
         <nav class="nav">
-            <a class="nav_link" href="Main-2.html">Главная</a>
-            <a class="nav_link" href="Profile.html">Профиль</a>
-            <a class="nav_link" href="Diary.html">Дневники</a>
-            <a class="nav_link" href="Main-2.html">О нас</a>
-            <a class="nav_link" href="News.html">Новости</a>
+            <<a class="nav_link" href="/Home">Главная</a>
+			<a class="nav_link" href="~/User">Профиль</a>
+			<a class="nav_link" href="~/User/RequestDiary">Дневники</a>
+			<a class="nav_link" href="/Home">О нас</a>
+			<a class="nav_link" href="~/User/News">Новости</a>
         </nav>
     </header>
 
@@ -43,12 +43,12 @@
                         <div class="dropdown">
                             <button onclick="myFunction()" class="dropbtn">Добавить запись</button>
                             <div id="myDropdown" class="dropdown-content">
-                                <a href="AddTextEntry">Текстовую</a>
-                                <a href="AddChecklistEntry">Чеклист</a>
-                                <a href="AddReminderEntry">Напоминание</a>
-                                <a href="AddImageEntry">С картинкой</a>
-                                <a href="AddTimeEntry">С таймером</a>
-                                <a href="AddMitingEntry">Встреча</a>
+                                <a asp-action="AddTextEntry" asp-route-id="@ViewBag.ID">Текстовую</a>
+                                <a href="~/User/AddChecklistEntry/@ViewBag.ID">Чеклист</a>
+                                <a href="~/User/AddReminderEntry/@ViewBag.ID">Напоминание</a>
+                                <a href="~/User/AddImageEntry/@ViewBag.ID">С картинкой</a>
+                                <a href="~/User/AddTimeEntry/@ViewBag.ID">С таймером</a>
+                                <a href="~/User/AddMitingEntry/@ViewBag.ID">Встреча</a>
                             </div>
                         </div>
                     </td>
@@ -56,14 +56,14 @@
                 @foreach (var user_diary in Model)
                 {
                     <tr>
-                        <td>Name</td>
-                        <td style="width:200px;
+						<td>@user_diary.Name</td>
+						<td style="width:200px;
 									 word-break: break-all">
-                            Description
-                        </td>
+							@user_diary.Description
+						</td>
                         <td>
                             <a asp-action=@user_diary.Type asp-route-id="@user_diary.ID" asp-route-id2="@ViewBag.ID" class="Edit" >Изменить</a>
-                            <a asp-action="DeleteEntry" asp-route-id="@user_diary.ID" class="Delete" >Удалить</a>
+                            <a asp-action="DeleteEntry" asp-route-id="@user_diary.ID" asp-route-id2="@ViewBag.ID" class="Delete" >Удалить</a>
                         </td>
                     </tr>
                 }

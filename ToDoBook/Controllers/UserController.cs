@@ -183,6 +183,7 @@ namespace ToDoBook.Controllers
 			_context.ReminderEntries.Find(data.ID).Name = data.Name;
 			_context.ReminderEntries.Find(data.ID).Description = data.Description;
 			_context.ReminderEntries.Find(data.ID).Time = data.Time;
+			_context.ReminderEntries.Find(data.ID).Email = data.Email;
 			_context.SaveChanges();
 			return RedirectToAction("Show_Entry", new { ID = DiaryID });
 		}
@@ -229,6 +230,9 @@ namespace ToDoBook.Controllers
 			else if (action == "Добавить чек")
 			{
 				{
+					_context.ChecklistEntries.Find(data.ID).Name = data.Name;
+					_context.ChecklistEntries.Find(data.ID).Description = data.Description;
+					_context.ChecklistEntries.Find(data.ID).Set(model);
 					model.Add(new Check());
 					_context.ChecklistEntries.Find(data.ID).Set(model);
 					_context.SaveChanges();
@@ -237,6 +241,9 @@ namespace ToDoBook.Controllers
 			}
             else
             {
+				_context.ChecklistEntries.Find(data.ID).Name = data.Name;
+				_context.ChecklistEntries.Find(data.ID).Description = data.Description;
+				_context.ChecklistEntries.Find(data.ID).Set(model);
 				model.Remove(model.Last());
 				_context.ChecklistEntries.Find(data.ID).Set(model);
 				_context.SaveChanges();
@@ -349,12 +356,12 @@ namespace ToDoBook.Controllers
 			return RedirectToAction("RequestDiary");
 		}
 
-		public ActionResult DeleteEntry(int ID)
+		public ActionResult DeleteEntry(int ID, int id2)
 		{
 			EntryManager entryManager = new EntryManager(_context);
 
 			entryManager.DeleteEntry(ID);
-			return RedirectToAction("Show_Entry");
+			return RedirectToAction("Show_Entry", new { ID = id2 });
 		}
 
 	}
