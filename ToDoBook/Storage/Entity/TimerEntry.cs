@@ -13,6 +13,7 @@ namespace ToDoBook.Storage.Entity
         public TimerEntry()
         {
             EndTime = new DateTime();
+            EndTime = DateTime.Now;
         }
     }
 }
