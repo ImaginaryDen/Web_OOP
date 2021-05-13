@@ -33,26 +33,31 @@
             <form class="entrytext" method="post">
                 <input type="hidden" value="@ViewBag.ID" name="DiaryID" />
                 <input type="hidden" value="@ViewBag.Entries.ID" name="ID" />
-                <table class="table">
-                    <tr>
-                        <td>Название:</td>
-                        <td><input type="text" value="@ViewBag.Entries.Name" name="Name" placeholder="Название" /> </td>
+				<table class="table">
+					<tr>
+						<td>Название:</td>
+						<td><input type="text" value="@ViewBag.Entries.Name" name="Name" placeholder="Название" /> </td>
 
-                    </tr>
-                    <tr>
-                        <td>Описание:</td>
-                        <td><input type="text" value="@ViewBag.Entries.Description" name="Description" placeholder="Описание" /></td>
+					</tr>
+					<tr>
+						<td>Описание:</td>
+						<td><input type="text" value="@ViewBag.Entries.Description" name="Description" placeholder="Описание" /></td>
 
-                    </tr>
-                    <tr>
-                        <td>Дата:</td>
-                        <td><input type="datetime-local" value="@ViewBag.Entries.Time.ToString("yyyy-MM-ddThh:mm")" name="Time" /></td>
+					</tr>
+					<tr>
+						<td>Место встречи:</td>
+						<td><input type="text" value="@ViewBag.Entries.Place" name="Place" placeholder="Место встречи" /></td>
 
-                    </tr>
-                    <tr>
-                        <td><input type="submit" value="Отправить" /></td>
-                    </tr>
-                </table>
+					</tr>
+					<tr>
+						<td>Дата:</td>
+						<td><input type="datetime-local" value="@ViewBag.Entries.Time.ToString("yyyy-MM-ddTHH:mm")" name="Time" /></td>
+
+					</tr>
+					<tr>
+						<td><input type="submit" value="Отправить" /></td>
+					</tr>
+				</table>
             </form>
         </div>
         <div class="footer"><div class="copy">Все права защищены &copy; 2021 ToDoBook</div></div>

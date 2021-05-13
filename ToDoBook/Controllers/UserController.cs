@@ -136,6 +136,7 @@ namespace ToDoBook.Controllers
 			_context.MitingEntries.Find(data.ID).Name = data.Name;
 			_context.MitingEntries.Find(data.ID).Description = data.Description;
 			_context.MitingEntries.Find(data.ID).Time = data.Time;
+			_context.MitingEntries.Find(data.ID).Place = data.Place;
 			_context.SaveChanges();
 			return RedirectToAction("Show_Entry", new { ID = DiaryID });
 		}
