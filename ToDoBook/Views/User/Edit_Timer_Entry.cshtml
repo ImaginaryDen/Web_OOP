@@ -1,5 +1,4 @@
 ﻿
-
 @{
     Layout = null;
 }
@@ -8,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <title>ToDoBook</title>
-    <link rel="stylesheet" href="css/entrytime.css">
+    <link rel="stylesheet" href="~/css/entrytime.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -45,7 +44,7 @@
                     </tr>
                     <tr>
                         <td>Дата окончания:</td>
-                        <td><input type="datetime-local" value="@ViewBag.Entries.Time.ToString("yyyy-MM-ddThh:mm")" name="Time" /></td>
+                        <td><input type="datetime-local" value="@ViewBag.Entries.EndTime.ToString("yyyy-MM-ddThh:mm")" name="Time" /></td>
 
                     </tr>
                     <tr>
