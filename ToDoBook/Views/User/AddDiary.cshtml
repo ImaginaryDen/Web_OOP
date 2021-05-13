@@ -2,28 +2,51 @@
     ViewData["Title"] = "New Diary";
 }
 <!DOCTYPE html>
-
 <html>
 <head>
-    <title>New Diary</title>
+    <meta charset="utf-8">
+    <title>ToDoBook</title>
+    <link rel="stylesheet" href="~/css/adddiary.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <h3>Создание нового дневника</h3>
-        <p>Для создания нового дневника заполните следующие поля:</p>
-        <form method="post">
-            <table>
-                <tr>
-                    <td>Название:</td>
-                    <td><input type="text" name="Name" /> </td>
-                </tr>
-                <tr>
-                    <td>Описание:</td>
-                    <td><input type="text" name="Description" /></td>
-                </tr>
-                <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
-            </table>
-        </form>
+    <header class="header">
+        <div class="header-logo">ToDoBook</div>
+        <div class="container-logo">
+            <img src="image/book.svg" alt="">
+        </div>
+        <nav class="nav">
+            <a class="nav_link" href="Main-2.html">Главная</a>
+            <a class="nav_link" href="Profile.html">Профиль</a>
+            <a class="nav_link" href="Diary.html">Дневники</a>
+            <a class="nav_link" href="Main-2.html">О нас</a>
+            <a class="nav_link" href="News.html">Новости</a>
+        </nav>
+    </header>
+
+    <div class="mainstr">
+        <div class="content">
+            <div class="zag">Создание нового дневника</div>
+            <div class="text">Для создания нового дневника заполните следующие поля:</div>
+            <form class="addear" method="post">
+                <table class="table">
+                    <tr>
+                        <td>Название:</td>
+                        <td><input type="text" placeholder="Название"></td>
+
+                    </tr>
+                    <tr>
+                        <td>Описание:</td>
+                        <td><input type="text" placeholder="Описание"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Добавить"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="footer"><div class="copy">Все права защищены &copy; 2021 ToDoBook</div></div>
     </div>
 </body>
+
 </html>
